@@ -1,5 +1,6 @@
 import {Request,Response} from 'express'
 import {connect} from '../database'
+import {Post} from '../interface/Post'
 
 export async function getPosts(req: Request, res: Response): Promise<Response | void> {
     try {
@@ -9,6 +10,12 @@ export async function getPosts(req: Request, res: Response): Promise<Response | 
     }
     catch (e) { 
         console.log(e)
-        console.log("HOLA")
     }
+}
+export async function createPost(req:Request, res:Response){
+    const newPost: Post = req.body
+    
+    return res.json({
+        message: 'POST CREATED'
+    })
 }
